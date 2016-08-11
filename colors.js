@@ -1,17 +1,5 @@
-#!/bin/ruby
-
-class ReadFile 
-
-@path_to_file 
-@path_to_repo 
-@file
-@file_out
-@project_name = "civica-mobile"
-@r
-
-	def initialize
-		@r = 
-"(function() {
+//start
+ (function() {
     crm.ui.colors = {
             labelColor: '#000000',
             mainColor: '#6a1a41',
@@ -45,44 +33,5 @@ class ReadFile
     };
 
 })();
-"
-
-		puts "initialize"
-		pull_repo(@project_name)
-		get_path
-		read_in
-		edit_file
-	end
-
-	def pull_repo(project_name)
-		puts "pull repo"
-
-		# enter git credentials		
-		# pull down project 
-	end
-
-	def get_path
-		@path_to_file = "colors.js"
-	end
-
-  def read_in
-		begin 
-			raise "File not found"  unless (@path_to_file.nil? || File.exists?(@path_to_file))
-			@file = File.read(@path_to_file)
-			puts @file
-		rescue => e 
-			puts e.message
-		end
-	end	
-
-	def edit_file
-		puts @r
-		@file_out = File.open(@path_to_file, "w") 
-		@file_out.syswrite(@file.gsub(/(?<=\/\/start)[^*]+(?=\/\/end)/, "\n #{@r} \n"))
-		@file_out.close
-	end
-
-end
-
-r = ReadFile.new
-
+ 
+//end
