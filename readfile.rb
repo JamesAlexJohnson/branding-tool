@@ -23,11 +23,9 @@ class ReadFile
 		styles = Styles.new
 		@text_in_from_template = styles.get_template(1)
 
-		# puts @text_in_from_template
 
 		edit_file = EditFile.new
-		# edit_file.edit_file("colors.js", @text_in_from_template)
-		edit_file("colors.js")
+		edit_file.edit_file("colors.js", @text_in_from_template, @file)
 	end
 
 	def greeting
@@ -36,12 +34,6 @@ class ReadFile
 		return unless !continue?(input_value, "\n")
 		puts "invalid entry \n\n"
 		greeting
-	end
-
-	def edit_file(file)
-		@file_out = File.open(file, "w") 
-		@file_out.syswrite(@file.gsub(/(?<=\/\/----start)[^*]+(?=\/\/end)/, "\n #{@text_in_from_template} \n"))
-		@file_out.close
 	end
 
 	private 
