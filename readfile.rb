@@ -1,18 +1,18 @@
 #!/bin/ruby
 require_relative 'templates/style_templates'
 require_relative 'user_input/setup'
-
+require_relative 'edit/edit_file'
 
 class ReadFile 
 
-@path_to_file 
-@path_to_repo 
-@file
-@file_out
-@project_name = "civica-mobile"
-@ins
-@main_color
-@text_in_from_template
+	@path_to_file 
+	@path_to_repo 
+	@file
+	@file_out
+	@project_name = "civica-mobile"
+	@ins
+	@main_color
+	@text_in_from_template
 
 	def initialize
 		greeting
@@ -22,9 +22,11 @@ class ReadFile
 
 		styles = Styles.new
 		@text_in_from_template = styles.get_template(1)
-		
-		puts @text_in_from_template
 
+		# puts @text_in_from_template
+
+		edit_file = EditFile.new
+		# edit_file.edit_file("colors.js", @text_in_from_template)
 		edit_file("colors.js")
 	end
 
@@ -37,7 +39,7 @@ class ReadFile
 	end
 
 	def edit_file(file)
-		@file_out = File.open("colors.js", "w") 
+		@file_out = File.open(file, "w") 
 		@file_out.syswrite(@file.gsub(/(?<=\/\/----start)[^*]+(?=\/\/end)/, "\n #{@text_in_from_template} \n"))
 		@file_out.close
 	end
