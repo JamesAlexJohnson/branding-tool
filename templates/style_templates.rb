@@ -11,8 +11,11 @@ class Styles
   end
 
   private 
+    
     def color_template
-        "edited (function() {
+      random_number = Random.new
+      num = random_number.rand(1..100)
+        "(function() {
                 edited
                 crm.ui.colors = {
                         labelColor: '#000000',
@@ -47,7 +50,7 @@ class Styles
                 };
 
             })();       
-        "
+        "+num.to_s
     end
 
 end

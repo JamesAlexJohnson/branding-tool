@@ -1,5 +1,8 @@
 #!/bin/ruby
 require_relative 'templates/style_templates'
+require_relative 'user_input/setup'
+
+
 class ReadFile 
 
 @path_to_file 
@@ -13,7 +16,11 @@ class ReadFile
 
 	def initialize
 		greeting
-		file = read_in(setup)
+		setup_object = Setup.new
+		file_from_setup_object = setup_object.setup
+
+		file = read_in(file_from_setup_object)
+
 		styles = Styles.new
 		@text_in_from_template = styles.get_template(1)
 		puts @text_in_from_template
@@ -28,15 +35,6 @@ class ReadFile
 		greeting
 	end
 
-	def setup
-		puts "please copy and past the full file path of the project to be edited\n\n"
-		file_path = gets.chomp
-		puts File.exist?(file_path)
-		return file_path unless !File.exist?(file_path)
-		puts "There doesn't seem to be a file here \n\n"
-		setup
-	end
-
   def read_in(file_path)
 		begin 
 			@file = File.read(file_path)
@@ -49,10 +47,6 @@ class ReadFile
 		@file_out = File.open("colors.js", "w") 
 		@file_out.syswrite(@file.gsub(/(?<=\/\/----start)[^*]+(?=\/\/end)/, "\n #{@text_in_from_template} \n"))
 		@file_out.close
-	end
-
-	def set_color
-		@main_color = "\'\#ffffff\'"
 	end
 
 	private 
