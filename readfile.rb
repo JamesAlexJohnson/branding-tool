@@ -17,14 +17,15 @@ class ReadFile
 	def initialize
 		greeting
 		setup_object = Setup.new
-		file_from_setup_object = setup_object.setup
 
-		file = read_in(file_from_setup_object)
+		@file = setup_object.setup
 
 		styles = Styles.new
 		@text_in_from_template = styles.get_template(1)
+		
 		puts @text_in_from_template
-		edit_file(file)
+
+		edit_file("colors.js")
 	end
 
 	def greeting
@@ -34,14 +35,6 @@ class ReadFile
 		puts "invalid entry \n\n"
 		greeting
 	end
-
-  def read_in(file_path)
-		begin 
-			@file = File.read(file_path)
-		rescue => e 
-			puts e.message 
-		end
-	end	
 
 	def edit_file(file)
 		@file_out = File.open("colors.js", "w") 
