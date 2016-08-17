@@ -20,12 +20,12 @@ class ReadFile
 
 		@file = setup_object.setup
 
-		styles = Styles.new
-		@text_in_from_template = styles.get_template(1)
-
+		# styles = Styles.new
+		# @text_in_from_template = styles.get_template(1)
 
 		edit_file = EditFile.new
-		edit_file.edit_file("colors.js", @text_in_from_template, @file)
+		settings = {file_name: "colors.js", template: 1, file: @file}
+		edit_file.edit_file(settings)
 	end
 
 	def greeting
