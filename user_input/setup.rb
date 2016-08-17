@@ -1,10 +1,43 @@
 class Setup
+  @colors
+
+  def initialize
+    @colors = {
+          labelColor: '#0f0f0f', 
+          labelColor: '#0f0f0f',
+          mainColor: '#0f0f0f',
+          accent: '#0f0f0f', 
+          btnPosFontColor: '#0f0f0f',
+          btnBorderColor: '#0f0f0f',
+          btnPosBgColor: '#0f0f0f',
+          bgColor: '#0f0f0f',
+          calendarViewColor: '#0f0f0f'
+        }
+  end
 
   def setup
-    read_in(get_file_path)
+    greeting
+    file = read_in(get_file_path)
+    get_colors
+    file
   end
 
   private 
+
+    def greeting
+      puts "Welcome to the branding tool, press enter to continue \n\n"
+      input_value = gets
+      return unless !continue?(input_value, "\n")
+      puts "invalid entry \n\n"
+      greeting
+    end
+
+    def get_colors
+      @colors.each do |key, value| 
+        puts "Please enter the hexidecimal value for #{key}"
+        @colors[key] = gets.chomp
+      end
+    end
 
     def get_file_path
       puts "please copy and past the full file path of the project to be edited\n\n"
@@ -22,4 +55,7 @@ class Setup
       end
     end 
 
+    def continue?(input, correct_value)
+      input == correct_value
+    end
 end

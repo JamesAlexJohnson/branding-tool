@@ -12,7 +12,7 @@ class EditFile
 
   def template_insert(template_id)
     @styles = Styles.new
-    @text_in_from_template = @styles.get_template(1)
+    template = @styles.get_template(template_id)
   end
 
   private
