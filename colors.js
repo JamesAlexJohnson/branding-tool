@@ -2,14 +2,14 @@
  (function() {
                 edited
                 crm.ui.colors = {
-                        labelColor: '#000000',
-                        mainColor: '#ffffff',
-                        accent: '#380e22', 
-                        btnPosFontColor: '#000000',
-                        btnBorderColor: '#000000',
-                        btnPosBgColor: '#380e22',
-                        bgColor: '#ffffff',
-                        calendarViewColor: '#ffffff'
+                        labelColor: '#wa',
+                        mainColor: '#was',
+                        accent: '#wass', 
+                        btnPosFontColor: ,
+                        btnBorderColor: '#wassaas',
+                        btnPosBgColor: ,
+                        bgColor: '#wassasa',
+                        calendarViewColor: '#wassasw'
                 };
                 
                 crm.ui.theme = {
@@ -34,5 +34,5 @@
                 };
 
             })();       
-        40 
+        89 
 //----end

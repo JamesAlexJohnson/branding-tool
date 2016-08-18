@@ -18,8 +18,12 @@ class Setup
   def setup
     greeting
     file = read_in(get_file_path)
-    get_colors
+    set_colors
     file
+  end
+
+  def get_colors
+    @colors
   end
 
   private 
@@ -32,11 +36,12 @@ class Setup
       greeting
     end
 
-    def get_colors
+    def set_colors
       @colors.each do |key, value| 
         puts "Please enter the hexidecimal value for #{key}"
-        @colors[key] = gets.chomp
+        @colors[key] = '\'#'+gets.chomp+'\''
       end
+      puts @colors
     end
 
     def get_file_path

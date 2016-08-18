@@ -1,12 +1,14 @@
 #!/bin/ruby
-
 class Styles
 
+  @setting
+  
   def initialize
     puts "Styles initialize"
   end
   
-  def get_template(template_name)
+  def get_template(template_name, setting)
+      @setting = setting
       @template = color_template
   end
 
@@ -15,17 +17,17 @@ class Styles
     def color_template
       random_number = Random.new
       num = random_number.rand(1..100)
-        "(function() {
+      yurp =  "(function() {
                 edited
                 crm.ui.colors = {
-                        labelColor: '#000000',
-                        mainColor: '#ffffff',
-                        accent: '#380e22', 
-                        btnPosFontColor: '#000000',
-                        btnBorderColor: '#000000',
-                        btnPosBgColor: '#380e22',
-                        bgColor: '#ffffff',
-                        calendarViewColor: '#ffffff'
+                        labelColor: #{@setting[:colors][:labelColor]},
+                        mainColor: #{@setting[:colors][:mainColor]},
+                        accent: #{@setting[:colors][:accent]}, 
+                        btnPosFontColor: #{@setting[:colors][:btnPosFontcolor]},
+                        btnBorderColor: #{@setting[:colors][:btnBorderColor]},
+                        btnPosBgColor: #{@setting[:colors][:brnPosBgColor]},
+                        bgColor: #{@setting[:colors][:bgColor]},
+                        calendarViewColor: #{@setting[:colors][:calendarViewColor]}
                 };
                 
                 crm.ui.theme = {

@@ -12,7 +12,12 @@ class ReadFile
 		file = setup_object.setup
 
 		edit_file = EditFile.new
+
 		settings = {file_name: "colors.js", template: 1, file: file}
+
+		settings[:colors] = setup_object.get_colors
+		
+		
 		edit_file.edit_file(settings)
 	end
 
